@@ -7,8 +7,10 @@ package ru.ankoks;
 
 import java.awt.Color;
 import java.awt.Component;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
@@ -38,6 +40,11 @@ class ColorColumnRenderer extends DefaultTableCellRenderer {
         cell.setForeground(fgndColor);
 
         super.setHorizontalAlignment(CENTER);
+        
+        MatteBorder border = new MatteBorder(1, 0, 0, 0, Color.WHITE);
+        if (cell instanceof JComponent) {
+            ((JComponent) cell).setBorder(border);
+        }
 
         return cell;
     }

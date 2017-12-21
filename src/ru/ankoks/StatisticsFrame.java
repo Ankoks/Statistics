@@ -26,7 +26,7 @@ public class StatisticsFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    private static int rowNum;
+    private static int rowNum = 15;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,6 +98,7 @@ public class StatisticsFrame extends javax.swing.JFrame {
         tm3.setCellRenderer(new ColorColumnRenderer(Color.BLACK, Color.ORANGE));
         tm3.setHeaderRenderer(new HeaderRenderer(Color.BLACK, Color.ORANGE));
         jScrollPane4.setViewportView(jTableAll);
+        insertEmptyRows();
 
         jLabelLastNum.setFont(new java.awt.Font("Tahoma", 0, 50)); // NOI18N
         jLabelLastNum.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,9 +150,14 @@ public class StatisticsFrame extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         insertRow();
-        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void insertEmptyRows() {
+        DefaultTableModel modelAll = (DefaultTableModel) jTableAll.getModel();
+        for (int i = 0; i < 15; i++) {
+            modelAll.insertRow(0, new Object[]{null, null, null});
+        }
+    }
     private void insertRow() {
         /*DefaultTableModel modelBlack = (DefaultTableModel) jTableBlack.getModel();
         DefaultTableModel modelZero = (DefaultTableModel) jTableZero.getModel();
